@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// ─── PROVIDED ────────────────────────────────────────────────────────────────
+int object_write(ObjectType type, const void *data, size_t len, ObjectID *id_out);
 
 int tree_serialize(const Tree *tree, void **data_out, size_t *len_out) {
     uint8_t *buffer = malloc(tree->count * 600);
@@ -19,8 +19,6 @@ int tree_serialize(const Tree *tree, void **data_out, size_t *len_out) {
     *data_out = buffer; *len_out = offset;
     return 0;
 }
-
-// ─── TODO IMPLEMENTATION ─────────────────────────────────────────────────────
 
 int tree_from_index(ObjectID *id_out) {
     Index index;
